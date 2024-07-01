@@ -10,18 +10,19 @@
     <title>BANKIST</title>
   </head>
   <body>
+    <nav class="nav">
+      <!-- sticky-nav -->
+      <div class="logo">
+        <img src="img/logo.png" alt="" />
+      </div>
+      <ul class="nav-links">
+        <li class="nav-link nav-link1">Features</li>
+        <li class="nav-link nav-link2">Operations</li>
+        <li class="nav-link nav-link3">Testimonials</li>
+        <li class="nav-link nav-link4">Open account</li>
+      </ul>
+    </nav>
     <div class="header">
-      <nav class="nav">
-        <div class="logo">
-          <img src="img/logo.png" alt="" />
-        </div>
-        <ul class="nav-links">
-          <li class="nav-link nav-link1">Features</li>
-          <li class="nav-link nav-link2">Operations</li>
-          <li class="nav-link nav-link3">Testimonials</li>
-          <li class="nav-link nav-link4">Open account</li>
-        </ul>
-      </nav>
       <div class="opening">
         <div class="left-side">
           <h1>
@@ -29,18 +30,14 @@
             <span class="highlight">minimalist</span>
           </h1>
           <p>A simpler banking experience for a simpler life.</p>
-          <button>
-            <a href="#section1" style="color: var(--color-primary)"
-              >Learn more ↓</a
-            >
-          </button>
+          <button class="more-btn" href="#section1">Learn more ↓</button>
         </div>
         <div class="right-side">
           <img src="img/hero.png" alt="" />
         </div>
       </div>
     </div>
-    <section class="section section1">
+    <section class="section section1 hidden-section">
       <div class="title">
         <h3>FEATURES</h3>
         <h1>
@@ -99,20 +96,78 @@
         </div>
       </div>
     </section>
-    <section class="section section2">
+    <section class="section section2 hidden-section">
       <div class="title">
         <h3>OPERATIONS</h3>
         <h1>Everything as simple as possible, but <br />no simpler.</h1>
       </div>
       <div class="operations-content">
         <div class="operations-btn">
-          <button class="btn transfer-btn">01 instant Transfers</button>
-          <button class="btn loan-btn">02 instant Loans</button>
-          <button class="btn close-btn">03 instant Closing</button>
+          <button class="btn transfer-btn" data-number="1">
+            01 instant Transfers
+          </button>
+          <button class="btn loan-btn" data-number="2">02 instant Loans</button>
+          <button class="btn close-btn" data-number="3">
+            03 instant Closing
+          </button>
+        </div>
+
+        <div class="tabbed-div tabbed-div1 active-tabbed-div">
+          <div class="icon transfer-icon">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-upload"></use>
+            </svg>
+          </div>
+          <div class="info">
+            <h1>Tranfser money to anyone, instantly! No fees, no BS.</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+
+        <div class="tabbed-div tabbed-div2 hidden">
+          <div class="icon loan-icon">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-home"></use>
+            </svg>
+          </div>
+          <div class="info">
+            <h1>
+              Buy a home or make your dreams come true, with instant loans.
+            </h1>
+            <p>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit
+              anim id est laborum.
+            </p>
+          </div>
+        </div>
+        <div class="tabbed-div tabbed-div3 hidden">
+          <div class="icon close-icon">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-user-x"></use>
+            </svg>
+          </div>
+          <div class="info">
+            <h1>
+              No longer need your account? No problem! Close it instantly.
+            </h1>
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+              officia deserunt mollit anim id est laborum. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat.
+            </p>
+          </div>
         </div>
       </div>
     </section>
-    <section class="section section3"></section>
+    <section class="section section3 hidden-section"></section>
     <script src="main.js"></script>
   </body>
 </html>

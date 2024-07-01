@@ -38,10 +38,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;
   padding: 0 6rem;
   height: 7rem;
-  position: fixed;
+  transition: 0.6s;
+
   z-index: 30;
 }
 .logo img {
@@ -110,22 +111,25 @@ body {
   height: 3rem;
   background: transparent;
   border: none;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   width: 10rem;
+  color: var(--color-primary);
+  text-decoration: underline;
+  transition: 0.6s;
+}
+.left-side button:hover {
+  transform: translateY(1rem);
 }
 .section {
   width: 100%;
   height: 100vh;
-}
-.section {
   border-bottom: 1px solid #98989861;
-}
-.section {
   padding: 10rem 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: fit-content;
+  transition: 3s;
 }
 
 .title h3 {
@@ -197,6 +201,7 @@ body {
   justify-content: center;
   height: 3rem;
   position: relative;
+  margin-bottom: 2rem;
 }
 .operations-btn button {
   height: 3rem;
@@ -210,8 +215,9 @@ body {
   font-weight: 400;
   cursor: pointer;
   transition: all 0.3s;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
 }
+
 .transfer-btn {
   background-color: var(--color-secondary);
 }
@@ -220,4 +226,91 @@ body {
 }
 .close-btn {
   background-color: var(--color-tertiary);
+}
+
+.hidden {
+  display: none;
+}
+.active-tabbed-div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+}
+.icon {
+  height: 65px;
+  width: 65px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+.info h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.info p {
+  font-size: 1rem;
+  color: #666;
+}
+.transfer-icon {
+  background: var(--color-secondary-opacity);
+}
+.loan-icon {
+  background: var(--color-primary-opacity);
+}
+.close-icon {
+  background: var(--color-tertiary-opacity);
+}
+.transfer-icon svg {
+  fill: var(--color-secondary-darker);
+}
+.loan-icon svg {
+  fill: var(--color-primary-darker);
+}
+.close-icon svg {
+  fill: var(--color-tertiary-darker);
+}
+.sticky-nav {
+  /* used */
+  position: fixed;
+  background-color: rgb(255, 255, 255, 0.9);
+}
+.active-opt-btn {
+  /* used */
+  transform: translateY(-75%);
+}
+.hidden-section {
+  opacity: 0;
+  transform: translateY(8rem);
+}
+@media (max-width: 950px) {
+  .features img {
+    height: 19rem;
+    width: 25rem;
+  }
+  .inner-feature {
+    padding: 0;
+  }
+  .opening {
+    width: 87%;
+  }
+  .left-side h1 {
+    font-size: 2.5rem;
+  }
+  .left-side p {
+    font-size: 1.2rem;
+  }
+  .section {
+    padding: 10rem 3rem;
+  }
+  .operations-content {
+    width: 55rem;
+    padding: 0 3rem;
+  }
+  .nav {
+    padding: 0 1rem;
+  }
 }
