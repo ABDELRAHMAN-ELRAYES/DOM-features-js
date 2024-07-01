@@ -198,6 +198,7 @@ body {
 .operations-btn {
   display: grid;
   grid-template-columns: repeat(3, 15rem);
+  transform: translateY(-50%);
   justify-content: center;
   height: 3rem;
   position: relative;
@@ -207,7 +208,6 @@ body {
   height: 3rem;
   width: 14rem;
   margin-right: 2.5rem;
-  transform: translateY(-50%);
   border: none;
   border-radius: 1.5rem;
   font-size: 1.1rem;
@@ -280,11 +280,17 @@ body {
 }
 .active-opt-btn {
   /* used */
-  transform: translateY(-75%);
+  transform: translateY(-25%);
 }
 .hidden-section {
   opacity: 0;
   transform: translateY(8rem);
+}
+.img-blur {
+  filter: blur(20px);
+}
+.feature-img {
+  transition: 1s;
 }
 @media (max-width: 950px) {
   .features img {
