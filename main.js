@@ -7,6 +7,10 @@ let sections = document.querySelectorAll('.section');
 let blurImgs = document.querySelectorAll('.feature-img');
 let operationsBtns = document.querySelector('.operations-btn');
 let tabbedDivs = document.querySelectorAll('.tabbed-div');
+let slides = document.querySelectorAll('.slide');
+let nxtSliderBtn = document.querySelector('.right-slide');
+let prvSliderBtn = document.querySelector('.left-slide');
+let dots = document.querySelector('.dots');
 
 //to make the nav bar appear after passing the first section(header) to easily move
 // window.addEventListener('scroll', () => {
@@ -33,7 +37,7 @@ observer.observe(header);
 let secCallback = function (entries, observer) {
   let [entry] = entries;
   if (entry.isIntersecting) {
-    entry.target.classList.remove('hidden-section');
+    // entry.target.classList.remove('hidden-section');
     observer.unobserve(entry.target);
   }
 };
@@ -69,7 +73,7 @@ blurImgs.forEach(img => {
 });
 //implement operations slider throw btns
 operationsBtns.addEventListener('click', function (e) {
-  if (e.target.closest('.operations-btn')) {
+  if (e.target.classList.contains('btn')) {
     let siblings = Array.from(e.target.parentNode.children);
     siblings.forEach(sib => {
       sib.classList.remove('active-opt-btn');
@@ -82,5 +86,64 @@ operationsBtns.addEventListener('click', function (e) {
     });
     let className = `tabbed-div${e.target.dataset.number}`;
     document.querySelector(`.${className}`).classList.add('active-tabbed-div');
+  }
+});
+// warn the user that his data will be lost if close the website
+window.addEventListener('beforeunload', e => {
+  e.preventDefault();
+  e.returnValue = '';
+});
+//make the slider
+
+let curSlide = 0;
+
+let goToSlide = function (cur) {
+  slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${100 * (i - cur)}%)`;
+  });
+};
+slides.forEach((slid, i) => {
+  let dot = `<div class="dot" data-slide-number=${i}></div>`;
+  dots.insertAdjacentHTML('beforeend', dot);
+});
+
+let updateActiveDot = function (curDot) {
+  let activeDot = dots.querySelector(`.dot[data-slide-number="${curDot}"]`);
+  Array.from(dots.children).forEach(child => {
+    child.classList.remove('active-dot');
+  });
+  activeDot.classList.add('active-dot');
+};
+// slides.forEach((slide, i) => {
+//   slide.style.transform = `translateX(${100 * i}%)`;
+// });
+updateActiveDot(0);
+goToSlide(0);
+nxtSliderBtn.addEventListener('click', () => {
+  if (curSlide === slides.length - 1) curSlide = 0;
+  else ++curSlide;
+  // slides.forEach((slide, i) => {
+  //   slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
+  // });
+  goToSlide(curSlide);
+  updateActiveDot(curSlide);
+});
+prvSliderBtn.addEventListener('click', () => {
+  if (curSlide === 0) curSlide = slides.length - 1;
+  else --curSlide;
+  // slides.forEach((slide, i) => {
+  //   slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
+  // });
+  goToSlide(curSlide);
+  updateActiveDot(curSlide);
+});
+
+dots.addEventListener('click', event => {
+  if (event.target.classList.contains('dot')) {
+    goToSlide(Number(event.target.dataset.slideNumber));
+    Array.from(event.target.parentNode.children).forEach(child => {
+      child.classList.remove('active-dot');
+    });
+    event.target.classList.add('active-dot');
   }
 });
