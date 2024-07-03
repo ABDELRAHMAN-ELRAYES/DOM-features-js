@@ -1,6 +1,7 @@
 'use strict';
 let moreBtn = document.querySelector('.more-btn');
 let nav = document.querySelector('.nav');
+let navLinks = document.querySelector('.nav-links');
 let section1 = document.querySelector('.section1');
 let header = document.querySelector('.header');
 let sections = document.querySelectorAll('.section');
@@ -147,30 +148,36 @@ dots.addEventListener('click', event => {
     event.target.classList.add('active-dot');
   }
 });
-
+// highlight the mouseover child
+navLinks.addEventListener('mouseover', event => {
+  if (event.target.classList.contains('nav-link')) {
+    let targetParent = event.target.parentNode;
+    Array.from(targetParent.children).forEach(ch => {
+      ch.style.opacity = '0.5';
+    });
+    targetParent.parentNode.querySelector('.logo').style.opacity = '0.5';
+    event.target.style.opacity = '1';
+  }
+});
+navLinks.addEventListener('mouseout', event => {
+  if (event.target.classList.contains('nav-link')) {
+    let targetParent = event.target.parentNode;
+    Array.from(targetParent.children).forEach(ch => {
+      ch.style.opacity = '1';
+    });
+    targetParent.parentNode.querySelector('.logo').style.opacity = '1';
+  }
+});
+//smoothly movement links
+navLinks.addEventListener('click', event => {
+  if (event.target.classList.contains('nav-link')) {
+    let targetSection = event.target.dataset.sectionNumber;
+    let sec = document.querySelector(`.section${targetSection}`);
+    window.scrollTo({
+      top: sec.getBoundingClientRect().top + window.scrollY,
+      left: sec.getBoundingClientRect().left + window.scrollX,
+      behavior: 'smooth',
+    });
+  }
+});
 /* ------------------------------------------------------- */
-
-let Person = function (firstName, birthDate) {
-  //constructor function
-  this.firstName = firstName;
-  this.birthDate = birthDate;
-  this.sayHello = function () {
-    console.log('hello world');
-  };
-};
-
-let ahmed = new Person('ahmed', 2003);
-ahmed.sayHello();
-let same = {
-  firstName: 'ahmed',
-  birthDate: 2003,
-};
-console.log(ahmed instanceof Person);
-console.log(same instanceof Person);
-/* 
-constructor function 
-1- make an empty object 
-2- call function , this -> {}
-3- link prototype ----with--> {}
-4- function return the object by default
-*/

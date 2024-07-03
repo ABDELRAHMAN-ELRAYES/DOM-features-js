@@ -426,6 +426,9 @@ footer {
   text-decoration: none;
   color: white;
 }
+footer img {
+  width: 4rem;
+}
 
 @media (max-width: 950px) {
   .features img {
