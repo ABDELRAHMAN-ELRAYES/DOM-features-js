@@ -37,7 +37,7 @@ observer.observe(header);
 let secCallback = function (entries, observer) {
   let [entry] = entries;
   if (entry.isIntersecting) {
-    // entry.target.classList.remove('hidden-section');
+    entry.target.classList.remove('hidden-section');
     observer.unobserve(entry.target);
   }
 };
@@ -147,3 +147,30 @@ dots.addEventListener('click', event => {
     event.target.classList.add('active-dot');
   }
 });
+
+/* ------------------------------------------------------- */
+
+let Person = function (firstName, birthDate) {
+  //constructor function
+  this.firstName = firstName;
+  this.birthDate = birthDate;
+  this.sayHello = function () {
+    console.log('hello world');
+  };
+};
+
+let ahmed = new Person('ahmed', 2003);
+ahmed.sayHello();
+let same = {
+  firstName: 'ahmed',
+  birthDate: 2003,
+};
+console.log(ahmed instanceof Person);
+console.log(same instanceof Person);
+/* 
+constructor function 
+1- make an empty object 
+2- call function , this -> {}
+3- link prototype ----with--> {}
+4- function return the object by default
+*/
